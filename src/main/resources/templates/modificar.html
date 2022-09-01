@@ -16,16 +16,25 @@ que creemos -->
     <form th:action="@{/guardar}" method="post" th:object="${persona}">
         <input type="hidden" name="id" th:field="*{id}">
         <label>Nombre: </label>
-        <input type="text" name="nombre" th:field="*{nombre}">
+        <input type="text" name="nombre" th:field="*{nombre}"/>
+        <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">
+            Error nombre
+        </span>
         <br/>
         <label>Apellido: </label>
-        <input type="text" name="apellido" th:field="*{apellido}">
+        <input type="text" name="apellido" th:field="*{apellido}"/>
+        <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">
+            Error apellido
+        </span>
         <br/>
         <label>Email: </label>
-        <input type="email" name="email" th:field="*{email}">
+        <input type="text" name="email" th:field="*{email}"/>
+        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+            Error email
+        </span>
         <br/>
         <label>Telefono: </label>
-        <input type="tel" name="telefono" th:field="*{telefono}">
+        <input type="tel" name="telefono" th:field="*{telefono}"/>
         <br/>
         <button>Guardar</button>
     </form>
