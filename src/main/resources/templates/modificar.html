@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- Para evitar los warnings de inicio agregar el segundo
+namespace de w3, lo que hara que debemos cerrar toda etiqueta
+que creemos -->
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Datos de la persona</title>
+</head>
+<body>
+    <h1>Datos de la persona</h1>
+    <a th:href="@{/}">Regresar</a>
+    <br/>
+    <form th:action="@{/guardar}" method="post" th:object="${persona}">
+        <input type="hidden" name="id" th:field="*{id}">
+        <label>Nombre: </label>
+        <input type="text" name="nombre" th:field="*{nombre}">
+        <br/>
+        <label>Apellido: </label>
+        <input type="text" name="apellido" th:field="*{apellido}">
+        <br/>
+        <label>Email: </label>
+        <input type="email" name="email" th:field="*{email}">
+        <br/>
+        <label>Telefono: </label>
+        <input type="tel" name="telefono" th:field="*{telefono}">
+        <br/>
+        <button>Guardar</button>
+    </form>
+
+</body>
+</html>
