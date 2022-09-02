@@ -12,6 +12,12 @@
     </header>
 
     <footer th:fragment="footer">
+        <br />
+        <hr />
+        <div>
+            <a th:href="@{/(lang=es)}">ES</a> |
+            <a th:href="@{/(lang=en)}">EN</a>
+        </div>
         <!-- Para evitar que el texto alterno interno que se pone en la etiqueta usamos la sintaxis
          [[#{variables}]]-->
         <p> [[ #{plantilla.footer} ]]</p>
