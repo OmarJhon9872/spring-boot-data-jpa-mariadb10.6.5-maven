@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Inicio</title>
 </head>
 <body>
@@ -9,16 +9,16 @@
     <!-- Define el fragmento necesario a usar desde el archivo plantilla -->
     <header th:replace="layout/plantilla :: header"></header>
 
-    <a th:href="@{/agregar}">Crear persona</a>
+    <a th:href="@{/agregar}" th:text="#{persona.crear}"></a>
     <div th:if="${personas != nulll and !personas.empty}">
         <table border="1">
             <thead>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Telefono</th>
-                <th>Email</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
+                <th th:text="#{persona.nombre}">Nombre</th>
+                <th th:text="#{persona.apellido}">Apellido</th>
+                <th th:text="#{persona.telefono}">Telefono</th>
+                <th th:text="#{persona.email}">Email</th>
+                <th th:text="#{accion.editar}">Editar</th>
+                <th th:text="#{accion.eliminar}">Eliminar</th>
             </thead>
             <tbody>
                     <tr th:each="persona : ${personas}">
@@ -27,14 +27,10 @@
                         <td th:text="${persona.telefono}"></td>
                         <td th:text="${persona.email}"></td>
                         <td>
-                            <a th:href="@{/editar/} + ${persona.id}">
-                                Editar
-                            </a>
+                            <a th:href="@{/editar/} + ${persona.id}" th:text="#{accion.editar}"></a>
                         </td>
                         <td>
-                            <a th:href="@{/eliminar(id=${persona.id})}">
-                                Eliminar
-                            </a>
+                            <a th:href="@{/eliminar(id=${persona.id})}" th:text="#{accion.eliminar}"></a>
                         </td>
                     </tr>
             </tbody>
@@ -42,7 +38,7 @@
 
     </div>
     <div th:if="${personas == nulll or personas.empty}">
-        No hay compañeros de trabajo2
+        [[#{persona.listaVacia}]]
     </div>
 
     <!-- Define el fragmento necesario a usar desde el archivo plantilla -->

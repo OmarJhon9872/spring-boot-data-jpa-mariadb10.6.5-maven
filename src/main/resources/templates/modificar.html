@@ -7,40 +7,44 @@ que creemos -->
       xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
-    <title>Datos de la persona</title>
+    <title th:text="#{persona.detalle}"></title>
 </head>
 <body>
 
     <!-- Define el fragmento necesario a usar desde el archivo plantilla -->
     <header th:replace="layout/plantilla :: header"></header>
 
-    <h3>Datos de la persona</h3>
-    <a th:href="@{/}">Regresar</a>
+    <h3 th:text="#{persona.detalle}"></h3>
+    <a th:href="@{/}" th:text="#{accion.regresar}"></a>
     <br/>
     <form th:action="@{/guardar}" method="post" th:object="${persona}">
+
         <input type="hidden" name="id" th:field="*{id}">
-        <label>Nombre: </label>
+        <label>[[#{persona.nombre}]]:</label>
         <input type="text" name="nombre" th:field="*{nombre}"/>
-        <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">
-            Error nombre
-        </span>
+        <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
+
         <br/>
-        <label>Apellido: </label>
+
+        <label>[[#{persona.apellido}]]:</label>
         <input type="text" name="apellido" th:field="*{apellido}"/>
-        <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">
-            Error apellido
-        </span>
+        <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></span>
+
         <br/>
-        <label>Email: </label>
+
+        <label>[[#{persona.email}]]:</label>
         <input type="text" name="email" th:field="*{email}"/>
-        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
-            Error email
-        </span>
+        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+
         <br/>
-        <label>Telefono: </label>
+
+        <label>[[#{persona.telefono}]]:</label>
         <input type="tel" name="telefono" th:field="*{telefono}"/>
+        <span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></span>
+
         <br/>
-        <button>Guardar</button>
+
+        <button th:text="#{accion.guardar}"></button>
     </form>
 
     <!-- Define el fragmento necesario a usar desde el archivo plantilla -->
