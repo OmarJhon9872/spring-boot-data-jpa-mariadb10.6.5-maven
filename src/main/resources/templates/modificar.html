@@ -10,7 +10,11 @@ que creemos -->
     <title>Datos de la persona</title>
 </head>
 <body>
-    <h1>Datos de la persona</h1>
+
+    <!-- Define el fragmento necesario a usar desde el archivo plantilla -->
+    <header th:replace="layout/plantilla :: header"></header>
+
+    <h3>Datos de la persona</h3>
     <a th:href="@{/}">Regresar</a>
     <br/>
     <form th:action="@{/guardar}" method="post" th:object="${persona}">
@@ -39,5 +43,7 @@ que creemos -->
         <button>Guardar</button>
     </form>
 
+    <!-- Define el fragmento necesario a usar desde el archivo plantilla -->
+    <footer th:replace="layout/plantilla :: footer"></footer>
 </body>
 </html>

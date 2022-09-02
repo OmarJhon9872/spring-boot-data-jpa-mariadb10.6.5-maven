@@ -5,7 +5,10 @@
     <title>Inicio</title>
 </head>
 <body>
-    <h4>Compañeros</h4>
+
+    <!-- Define el fragmento necesario a usar desde el archivo plantilla -->
+    <header th:replace="layout/plantilla :: header"></header>
+
     <a th:href="@{/agregar}">Crear persona</a>
     <div th:if="${personas != nulll and !personas.empty}">
         <table border="1">
@@ -41,6 +44,9 @@
     <div th:if="${personas == nulll or personas.empty}">
         No hay compañeros de trabajo2
     </div>
+
+    <!-- Define el fragmento necesario a usar desde el archivo plantilla -->
+    <footer th:replace="layout/plantilla :: footer"></footer>
 
 </body>
 </html>
