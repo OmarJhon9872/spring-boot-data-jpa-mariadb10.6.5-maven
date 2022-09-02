@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8"/>
     <title>Inicio</title>
@@ -9,7 +10,10 @@
     <!-- Define el fragmento necesario a usar desde el archivo plantilla -->
     <header th:replace="layout/plantilla :: header"></header>
 
-    <a th:href="@{/agregar}" th:text="#{persona.crear}"></a>
+    <a th:href="@{/agregar}"
+       th:text="#{persona.crear}"
+       sec:authorize="hasRole('ROLE_ADMIN')"></a>
+
     <div th:if="${personas != nulll and !personas.empty}">
         <table border="1">
             <thead>
@@ -17,8 +21,12 @@
                 <th th:text="#{persona.apellido}">Apellido</th>
                 <th th:text="#{persona.telefono}">Telefono</th>
                 <th th:text="#{persona.email}">Email</th>
-                <th th:text="#{accion.editar}">Editar</th>
-                <th th:text="#{accion.eliminar}">Eliminar</th>
+
+                <th sec:authorize="hasRole('ROLE_ADMIN')"
+                    th:text="#{accion.editar}">Editar</th>
+
+                <th sec:authorize="hasRole('ROLE_ADMIN')"
+                    th:text="#{accion.eliminar}">Eliminar</th>
             </thead>
             <tbody>
                     <tr th:each="persona : ${personas}">
@@ -26,10 +34,10 @@
                         <td th:text="${persona.apellido}"></td>
                         <td th:text="${persona.telefono}"></td>
                         <td th:text="${persona.email}"></td>
-                        <td>
+                        <td sec:authorize="hasRole('ROLE_ADMIN')">
                             <a th:href="@{/editar/} + ${persona.id}" th:text="#{accion.editar}"></a>
                         </td>
-                        <td>
+                        <td sec:authorize="hasRole('ROLE_ADMIN')">
                             <a th:href="@{/eliminar(id=${persona.id})}" th:text="#{accion.eliminar}"></a>
                         </td>
                     </tr>

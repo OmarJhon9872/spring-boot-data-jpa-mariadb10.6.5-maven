@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-                xmlns="http://www.w3.org/1999/xhtml">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8" />
     <title>Plantilla</title>
@@ -23,6 +24,10 @@
         <p> [[ #{plantilla.footer} ]]</p>
         <br>
         <form th:action="@{/logout}" method="post">
+            <b>Usuario: </b> <span sec:authentication="name">Usuario que se logueo</span>
+            <br/>
+            <b>Roles: </b><span sec:authentication="principal.authorities">Roles</span>
+            <br/>
             <button>Logout</button>
         </form>
     </footer>
