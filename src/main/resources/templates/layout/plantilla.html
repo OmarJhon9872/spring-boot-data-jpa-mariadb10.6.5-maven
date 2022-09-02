@@ -21,6 +21,10 @@
         <!-- Para evitar que el texto alterno interno que se pone en la etiqueta usamos la sintaxis
          [[#{variables}]]-->
         <p> [[ #{plantilla.footer} ]]</p>
+        <br>
+        <form th:action="@{/logout}" method="post">
+            <button>Logout</button>
+        </form>
     </footer>
 </body>
 </html>

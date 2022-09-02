@@ -3,7 +3,10 @@ package com.holamundothymeleaf.web;
 import com.holamundothymeleaf.domain.Persona;
 import com.holamundothymeleaf.service.PersonaService;
 import lombok.extern.slf4j.Slf4j;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -21,15 +24,15 @@ public class ControladorPrincipal {
     private PersonaService personaService;
 
     @GetMapping("/")
-    public String inicio(Model model){
+    public String inicio(@NotNull Model model, @AuthenticationPrincipal User user){
 
         var personas = personaService.listarPersonas();
         model.addAttribute("personas", personas);
 
         log.info("Ejecutando el metodo inicio");
+        log.info("usuario que hizo login: "+user);
         return "index";
     }
-
 
     @GetMapping("/agregar")
     public String agregar(Persona persona){
