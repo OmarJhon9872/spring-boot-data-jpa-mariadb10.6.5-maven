@@ -2,10 +2,11 @@
 <!-- Para evitar los warnings de inicio agregar el segundo
 namespace de w3, lo que hara que debemos cerrar toda etiqueta
 que creemos -->
-<html lang="en"
+<html lang="es"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
-<head>
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/plantilla :: head">
     <meta charset="UTF-8"/>
     <title th:text="#{persona.detalle}"></title>
 </head>
@@ -14,7 +15,12 @@ que creemos -->
     <!-- Define el fragmento necesario a usar desde el archivo plantilla -->
     <header th:replace="layout/plantilla :: header"></header>
 
-    <h3 th:text="#{persona.detalle}"></h3>
+    <section th:replace="layout/editarCliente :: editarCliente"></section>
+
+    <!-- Define el fragmento necesario a usar desde el archivo plantilla -->
+    <footer th:replace="layout/plantilla :: footer"></footer>
+
+    <!--<h3 th:text="#{persona.detalle}"></h3>
     <a th:href="@{/}" th:text="#{accion.regresar}"></a>
     <br/>
     <form th:action="@{/guardar}" method="post" th:object="${persona}">
@@ -45,9 +51,8 @@ que creemos -->
         <br/>
 
         <button th:text="#{accion.guardar}"></button>
-    </form>
+    </form>-->
 
-    <!-- Define el fragmento necesario a usar desde el archivo plantilla -->
-    <footer th:replace="layout/plantilla :: footer"></footer>
+
 </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
                 xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
+<head th:replace="layout/plantilla :: head">
     <meta charset="UTF-8"/>
     <title>Inicio</title>
 </head>
@@ -10,12 +10,19 @@
     <!-- Define el fragmento necesario a usar desde el archivo plantilla -->
     <header th:replace="layout/plantilla :: header"></header>
 
-    <a th:href="@{/agregar}"
+    <section th:replace="layout/botonesAgregar :: botonesAgregar"></section>
+    <section th:replace="layout/agregarCliente :: agregarCliente"></section>
+    <section th:replace="layout/listadoClientes :: listadoClientes"></section>
+
+    <!-- Define el fragmento necesario a usar desde el archivo plantilla -->
+    <footer th:replace="layout/plantilla :: footer"></footer>
+
+    <!--<a th:href="@{/agregar}"
        th:text="#{persona.crear}"
        sec:authorize="hasRole('ROLE_ADMIN')"></a>
 
-    <div th:if="${personas != nulll and !personas.empty}">
-        <table border="1">
+    <div th:if="${personas != nulll and !personas.empty}" class="table-responsive container">
+        <table border="1" class="table">
             <thead>
                 <th th:text="#{persona.nombre}">Nombre</th>
                 <th th:text="#{persona.apellido}">Apellido</th>
@@ -47,10 +54,9 @@
     </div>
     <div th:if="${personas == nulll or personas.empty}">
         [[#{persona.listaVacia}]]
-    </div>
+    </div>-->
 
-    <!-- Define el fragmento necesario a usar desde el archivo plantilla -->
-    <footer th:replace="layout/plantilla :: footer"></footer>
+
 
 </body>
 </html>

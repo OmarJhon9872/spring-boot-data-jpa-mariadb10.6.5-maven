@@ -29,6 +29,14 @@ public class ControladorPrincipal {
         var personas = personaService.listarPersonas();
         model.addAttribute("personas", personas);
 
+        var saldoTotal = 0;
+        for(var persona: personas){
+            saldoTotal += persona.getSaldo();
+        }
+
+        model.addAttribute("saldoTotal", saldoTotal);
+        model.addAttribute("totalClientes", personas.size());
+
         log.info("Ejecutando el metodo inicio");
         log.info("usuario que hizo login: "+user);
         return "index";

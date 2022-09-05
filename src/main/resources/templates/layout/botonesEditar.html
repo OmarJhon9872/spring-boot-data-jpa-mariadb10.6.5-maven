@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- Para evitar los warnings de inicio agregar el segundo
+namespace de w3, lo que hara que debemos cerrar toda etiqueta
+que creemos -->
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8" />
+    <title>Botones editar</title>
+</head>
+<body>
+    <section th:fragment="botonesEditar">
+        <div id="actions" class="py-4 mb-4 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a th:href="@{/}" class="btn btn-light btn-sm">
+                            <i class="fas fa-arrow-left"></i>
+                            [[#{accion.regresar}]]
+                        </a>
+                    </div>
+                    <div class="col-md-3 d-grid gap-2 mt-2 mt-sm-0">
+                        <button type="submit" class="btn btn-success btn-lg btn-sm">
+                            <i class="fas fa-check"></i>
+                            [[#{accion.guardar}]]
+                        </button>
+                    </div>
+                    <div class="col-md-3 d-grid gap-2 mt-2 mt-sm-0">
+                        <a th:href="@{/eliminar(id=${persona.id})}" class="btn btn-sm btn-danger">
+                            <i class="fas fa-trash"></i>
+                            [[#{accion.eliminar}]]
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
